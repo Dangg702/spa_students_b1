@@ -8,6 +8,7 @@ function Home() {
 
     useEffect(() => {
       let data = showAll();
+      console.log('data', data);
       setStudents(data);
     }, []);
 

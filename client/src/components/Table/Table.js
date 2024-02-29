@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, redirect  } from "react-router-dom";
 import { deleteService } from "~/services/deleteServices";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -33,6 +33,7 @@ function Table({ studentsData }) {
     }, [studentsData]);
 
     const onDeleteClick = (id) => {
+        setShow(true);
         // Set the student to be deleted
         setStudentToDelete(id);
     };
@@ -43,6 +44,7 @@ function Table({ studentsData }) {
             // Update data after successful deletion
             setData(data.filter((student) => student._id !== studentToDelete));
             navigate('/student/search');
+            // redirect('/student');
             // Clear the studentToDelete state 
             setStudentToDelete(null);
         } catch (error) {
@@ -85,12 +87,8 @@ function Table({ studentsData }) {
                                 Sửa
                             </Link>
                             {/* Button to set the student to delete */}
-                            {/* <button type="button" className="btn btn-outline-danger btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#deleteModal" onClick={() => onDeleteClick(student.mssv)}>
-                                Delete
-                            </button> */}
-                            <Button variant="outline-warning " size="lg" onClick={handleShow}>
+                            <Button variant="outline-warning " size="lg" onClick={() => onDeleteClick(student.mssv)}>
                                 Xóa
-                                {console.log('show', show)}
                             </Button>
                             {/* Modal to confirm deletion */}
                             <Modal show={show} onHide={handleClose}>
