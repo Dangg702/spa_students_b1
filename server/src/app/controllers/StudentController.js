@@ -1,11 +1,11 @@
-const Student = require('../models/StudentModel');
+import Student from '../models/StudentModel.js';
 
 class StudentController {
     // [GET] /student
     showAll(req, res, next) {
         Student.find({})
             .then((Student) => {
-                res.status(200).json({data: Student})
+                res.status(200).json({message: "success" , data: Student})
             })
             .catch(next);
     }
@@ -39,4 +39,4 @@ class StudentController {
     }
 }
 
-module.exports = new StudentController();
+export default new StudentController();

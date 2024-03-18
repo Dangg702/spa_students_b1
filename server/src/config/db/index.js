@@ -1,9 +1,12 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import dotenvFlow from 'dotenv-flow';
+dotenvFlow.config();
 
 async function connect() {
     try {
         await mongoose.connect(
-            'mongodb+srv://haidang:fX4Lc5QdReQF4VDo@cluster0test.0urha7d.mongodb.net/student_db?retryWrites=true&w=majority',
+            process.env.DBHOST,  { useUnifiedTopology: true, useNewUrlParser: true }
+            
         );
         console.log('Connect successfully!!!');
     } catch (error) {
@@ -11,4 +14,4 @@ async function connect() {
     }
 }
 
-module.exports = { connect };
+export default { connect };

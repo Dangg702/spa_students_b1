@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const studentSchema = new mongoose.Schema({
         mssv: { type: String, required: true, unique: true },
@@ -16,4 +16,4 @@ const studentSchema = new mongoose.Schema({
 );
 
 const Student = mongoose.model("Student", studentSchema);
-module.exports = Student;
+export default Student;

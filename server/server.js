@@ -1,11 +1,14 @@
-const express = require('express')
-const morgan = require('morgan')
-var cors = require('cors')
+import express from 'express';
+import morgan from 'morgan';
+import cors from 'cors';
+import db from './src/config/db/index.js';
+import routes from './src/routes/index.js';
+
+import dotenvFlow from 'dotenv-flow';
+dotenvFlow.config();
 
 const app = express()
 
-const route = require('./src/routes')
-const db = require('./src/config/db');
 // connect to DB
 db.connect();
 
@@ -22,9 +25,11 @@ app.use(
 );
 app.use(express.json());
 
-route(app)
+routes(app)
 
 // 
-app.listen(5000, () => {
-console.log(`Server listening on port ${5000}`)
+app.listen(5001, () => {
+console.log(`Server listening on port ${5001}`)
 })
+
+export default app; //for testing purposes

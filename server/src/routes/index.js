@@ -1,10 +1,7 @@
-
-const studentRouter = require('./student');
-
+import studentRouter from './student.js';
 
 function routes(app) {
     app.use('/student', studentRouter)
-
 }
 
-module.exports = routes;
+export default routes

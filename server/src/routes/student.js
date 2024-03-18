@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
-const studentController = require('../app/controllers/StudentController')
+import studentController from '../app/controllers/StudentController.js';
 
 router.put('/update/:id', studentController.update);
 router.delete('/delete/:id', studentController.delete);
@@ -9,4 +9,4 @@ router.post('/create', studentController.create);
 router.get('/search/:id', studentController.search);
 router.get('/', studentController.showAll);
 
-module.exports = router;
+export default router;
